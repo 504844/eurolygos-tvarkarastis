@@ -6,6 +6,8 @@ export interface Game {
   league: string;
   homeLogo?: string;
   awayLogo?: string;
+  homeOdds?: number;
+  awayOdds?: number;
 }
 
 export interface ScheduleData {
