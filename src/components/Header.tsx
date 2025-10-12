@@ -1,4 +1,4 @@
-import { Trophy } from 'lucide-react';
+import { Trophy } from "lucide-react";
 
 export function Header() {
   return (
@@ -13,11 +13,12 @@ export function Header() {
               </div>
             </div>
             <div>
-              <h1 className="text-white font-black text-2xl tracking-tight">Eurolyga</h1>
-              <p className="text-white/50 text-xs font-medium">2025/26 sezonas</p>
+              <h1 className="text-white font-black text-2xl tracking-tight">
+                Eurolyga
+              </h1>
+              <p className="text-white/50 text-xs font-medium"></p>
             </div>
           </div>
-
         </div>
       </div>
     </header>
