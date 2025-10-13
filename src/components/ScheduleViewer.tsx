@@ -5,8 +5,6 @@ import { Loader as Loader2, Command } from 'lucide-react';
 import { sortDateKeys } from '../lib/dateUtils';
 import { HybridGameGrid } from './HybridGameGrid';
 import { CommandPalette } from './CommandPalette';
-import { fetchBettingOddsForGames } from '../lib/oddsApi';
-import { updateGameOdds } from '../lib/scheduleService';
 
 export function ScheduleViewer() {
   const [data, setData] = useState<ScheduleData | null>(null);
@@ -21,36 +19,6 @@ export function ScheduleViewer() {
     setLoading(true);
     try {
       const scheduleData = await fetchSchedule(false);
-
-      const gamesNeedingOdds = scheduleData.games.filter(
-        game => !game.homeOdds || !game.awayOdds
-      );
-
-      if (gamesNeedingOdds.length > 0) {
-        console.log(`Fetching odds for ${gamesNeedingOdds.length} games`);
-        const oddsMap = await fetchBettingOddsForGames(
-          gamesNeedingOdds.map(game => ({
-            homeTeam: game.homeTeam,
-            awayTeam: game.awayTeam,
-          }))
-        );
-
-        console.log(`Received odds for ${oddsMap.size} games`);
-
-        for (const game of gamesNeedingOdds) {
-          const key = `${game.homeTeam}-${game.awayTeam}`;
-          const odds = oddsMap.get(key);
-          if (odds) {
-            console.log(`Found odds for ${game.homeTeam} vs ${game.awayTeam}:`, odds);
-            game.homeOdds = odds.homeOdds;
-            game.awayOdds = odds.awayOdds;
-            await updateGameOdds(game.homeTeam, game.awayTeam, odds.homeOdds, odds.awayOdds);
-          } else {
-            console.log(`No odds found for ${game.homeTeam} vs ${game.awayTeam}`);
-          }
-        }
-      }
-
       setData(scheduleData);
     } catch (error) {
       console.error('Error loading schedule:', error);
@@ -114,7 +82,7 @@ export function ScheduleViewer() {
           <div className="space-y-3">
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-orange-500 blur-2xl opacity-30"></div>
-              <h1 className=" relative text-5xl md:text-2xl font-black tracking-tight text-white drop-shadow-2xl">
+              <h1 className="relative text-1xl md:text-1xl font-black tracking-tight text-white drop-shadow-2xl">
                 Tvarkaraštis
               </h1>
             </div>

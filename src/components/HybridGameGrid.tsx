@@ -78,19 +78,19 @@ export function HybridGameGrid({ groupedGames, sortedDates, onDateIndexChange }:
               const formattedDate = formatRelativeDate(date);
 
               return (
-                <button
-                  key={date}
-                  onClick={() => jumpToDate(index)}
-                  className={`
-                    px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all flex-shrink-0 shadow-md
-                    ${isVisible
-                      ? 'bg-white text-purple-600 scale-105'
-                      : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-                    }
-                  `}
-                >
-                  {formattedDate.split(',')[0]}
-                </button>
+<button
+  key={date}
+  onClick={() => jumpToDate(index)}
+  className={`
+    px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap flex-shrink-0 shadow-md
+    ${isVisible
+      ? 'bg-white text-purple-600'
+      : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+    }
+  `}
+>
+  {formattedDate.split(',')[0]}
+</button>
               );
             })}
           </div>
@@ -107,16 +107,12 @@ export function HybridGameGrid({ groupedGames, sortedDates, onDateIndexChange }:
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {visibleDates.map((date, dateIndex) => {
+        {visibleDates.map((date) => {
           const games = groupedGames[date] || [];
           const formattedDate = formatRelativeDate(date);
 
           return (
-            <div
-              key={date}
-              className="space-y-3 animate-fadeIn"
-              style={{ animationDelay: `${dateIndex * 0.1}s` }}
-            >
+            <div key={date} className="space-y-3">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-orange-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
                 <div className="relative flex items-baseline justify-between gap-2 px-3 py-2 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
@@ -131,11 +127,7 @@ export function HybridGameGrid({ groupedGames, sortedDates, onDateIndexChange }:
 
               <div className="space-y-3">
                 {games.map((game, gameIndex) => (
-                  <div
-                    key={gameIndex}
-                    className="animate-fadeIn"
-                    style={{ animationDelay: `${(dateIndex * 0.1) + (gameIndex * 0.05)}s` }}
-                  >
+                  <div key={gameIndex}>
                     <GameCard game={game} />
                   </div>
                 ))}

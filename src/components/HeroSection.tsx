@@ -12,9 +12,9 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed] via-[#9333ea] to-[#a855f7]"></div>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-32 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-32 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
